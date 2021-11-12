@@ -95,7 +95,7 @@ class Role with EquatableMixin {
   List<Object?> get props => [value];
 }
 
-class SortOrder with EquatableMixin {
+class SortOrder with EquatableMixin implements Comparable<SortOrder> {
   late final UnsignedInt value;
 
   SortOrder({int sortValue = 0}) {
@@ -104,6 +104,17 @@ class SortOrder with EquatableMixin {
 
   @override
   List<Object?> get props => [value];
+
+  @override
+  int compareTo(other) {
+    if (this.value.value > other.value.value) {
+      return -1;
+    } else if (this.value.value > other.value.value) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
 }
 
 class TotalEmails with EquatableMixin {
